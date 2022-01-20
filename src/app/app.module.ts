@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
 import { HomeModule } from './main/home/home.module';
 import { QuestionsModule } from './main/questions/questions.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { QuestionsModule } from './main/questions/questions.module';
     HomeModule,
     QuestionsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
