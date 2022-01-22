@@ -1,1 +1,44 @@
-<div>Questions</div>
+<div *ngIf="!loading">
+
+  <div id="m-question" [ngClass]="{
+      'm-question-show': isShowAnimation,
+      'm-question-hide': !isShowAnimation,
+      'm-question-hide-for-next': isTransitionToNext,
+      'm-question-hide-for-prev': isTransitionToPrev
+    }" >
+    <div>
+      <span>
+        {{activeQuestionIndex+1}}- {{activeQuestion.headline}}
+      </span>
+    </div>
+
+    <mat-form-field appearance="outline"
+      *ngIf="activeQuestion.question_type === 'text'">
+      <input matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'false'"
+        placeholder="Type here ...">
+      <textarea matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'true'"
+        placeholder="Type here ..."></textarea>
+    </mat-form-field>
+
+    <mat-radio-group
+      *ngIf="activeQuestion.question_type === 'multiple-choice' && activeQuestion.multiple === 'false'"
+      class="m-radio-group-question"
+      [formControl]="activeQuestionFormControl">
+      <mat-radio-button class="" *ngFor="let choice of activeQuestion.choices" [value]="choice.value">
+        {{choice.label}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="m-questions-footer">
+    <button *ngIf="activeQuestionIndex === questionnaire.questions.length - 1"
+      mat-raised-button color="primary" class="ml-20" (click)="submit()">Submit</button>
+    <button *ngIf="activeQuestionIndex !== questionnaire.questions.length - 1"
+      [disabled]="activeQuestionFormControl?.invalid"
+      mat-raised-button color="primary" class="ml-20" (click)="goToNextQuestion()">Next</button>
+    <button *ngIf="activeQuestionIndex !== 0"
+      mat-raised-button color="primary" (click)="goToPrevQuestion()">Previous</button>
+  </div>
+</div>
+
+<mat-spinner class="a-spinner" *ngIf="loading"></mat-spinner>
