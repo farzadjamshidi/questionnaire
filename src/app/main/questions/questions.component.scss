@@ -1,6 +1,21 @@
 .o-questions-container {
 }
+.a-question-name {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.m-question {
+  height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .m-question-card {
+  flex: 1;
   margin: 16px;
 }
 .a-spinner {

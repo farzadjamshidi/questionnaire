@@ -1,34 +1,50 @@
 <div class="o-questions-container" *ngIf="!loading">
 
-  <mat-card id="m-question" class="m-question-card" [ngClass]="{
-      'm-question-show': isShowAnimation,
-      'm-question-hide': !isShowAnimation,
-      'm-question-hide-for-next': isTransitionToNext,
-      'm-question-hide-for-prev': isTransitionToPrev
-    }" >
-    <div class="mb-20">
-      <span class="a-question-headline">
-        {{activeQuestionIndex+1}}- {{activeQuestion.headline}}
-      </span>
+  <div class="m-25 a-question-name">
+    <span class="">
+      {{questionnaire.name}}
+    </span>
+    <mat-icon
+      class="ml-5 cursor-pointer"
+      [matTooltip]="questionnaire.description"
+      >info</mat-icon>
     </div>
+  <mat-progress-bar
+    [value]="(activeQuestionIndex+1) * 100 / questionnaire.questions.length"
+    >
+  </mat-progress-bar>
 
-    <mat-form-field appearance="outline" class="m-answer-section"
-      *ngIf="activeQuestion.question_type === 'text'">
-      <input matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'false'"
-        placeholder="Type here ...">
-      <textarea matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'true'"
-        rows="5"
-        placeholder="Type here ..."></textarea>
-    </mat-form-field>
+  <div class="m-question">
+    <mat-card id="m-question" class="m-question-card" [ngClass]="{
+        'm-question-show': isShowAnimation,
+        'm-question-hide': !isShowAnimation,
+        'm-question-hide-for-next': isTransitionToNext,
+        'm-question-hide-for-prev': isTransitionToPrev
+      }" >
+      <div class="mb-20">
+        <span class="a-question-headline">
+          {{activeQuestionIndex+1}}- {{activeQuestion.headline}}
+        </span>
+      </div>
 
-    <mat-radio-group class="m-answer-section m-radio-group-question"
-      *ngIf="activeQuestion.question_type === 'multiple-choice' && activeQuestion.multiple === 'false'"
-      [formControl]="activeQuestionFormControl">
-      <mat-radio-button class="" *ngFor="let choice of activeQuestion.choices" [value]="choice.value">
-        {{choice.label}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </mat-card>
+      <mat-form-field appearance="outline" class="m-answer-section"
+        *ngIf="activeQuestion.question_type === 'text'">
+        <input matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'false'"
+          placeholder="Type here ...">
+        <textarea matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'true'"
+          rows="5"
+          placeholder="Type here ..."></textarea>
+      </mat-form-field>
+
+      <mat-radio-group class="m-answer-section m-radio-group-question"
+        *ngIf="activeQuestion.question_type === 'multiple-choice' && activeQuestion.multiple === 'false'"
+        [formControl]="activeQuestionFormControl">
+        <mat-radio-button class="" *ngFor="let choice of activeQuestion.choices" [value]="choice.value">
+          {{choice.label}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card>
+  </div>
 
   <div class="m-questions-footer">
     <button *ngIf="activeQuestionIndex === questionnaire.questions.length - 1"
