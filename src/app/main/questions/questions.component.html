@@ -1,5 +1,14 @@
 <div class="o-questions-container" *ngIf="!loading">
 
+  <div class="m-25">
+    <span class="a-question-name">
+      {{questionnaire.name}}
+    </span>
+  </div>
+  <mat-progress-bar
+    [value]="(activeQuestionIndex+1) * 100 / questionnaire.questions.length"
+    >
+  </mat-progress-bar>
 
   <div class="m-question">
     <mat-card id="m-question" class="m-question-card" [ngClass]="{
