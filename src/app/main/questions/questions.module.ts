@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule, Routes } from '@angular/router';
-import { QuestionModule } from 'src/app/components/question/question.module';
 import { LocalStorage_v0_Question_Repo } from 'src/app/core/repository/localStorage/v0/question_repo.service';
 import { QuestionsComponent } from './questions.component';
 
@@ -15,20 +17,24 @@ const routes: Routes = [
 
 const COMPONENT = [QuestionsComponent];
 
+const MATERIAL_MODULES = [
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatInputModule,
+  MatRadioModule,
+  MatFormFieldModule
+];
 @NgModule({
   declarations: [...COMPONENT],
   imports: [
-    QuestionModule,
     ReactiveFormsModule,
     CommonModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
+    ...MATERIAL_MODULES,
     RouterModule.forChild(routes)
   ],
   exports: [
-    QuestionModule,
     RouterModule,
-    MatButtonModule,
+    ...MATERIAL_MODULES,
     ...COMPONENT
   ],
   providers: [
