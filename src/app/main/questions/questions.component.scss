@@ -1,3 +1,8 @@
+.o-questions-container {
+}
+.m-question-card {
+  margin: 16px;
+}
 .a-spinner {
   position: absolute;
   top: 50%;
@@ -26,10 +31,21 @@
 .m-radio-group-question {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 .m-questions-footer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
   display: flex;
   flex-direction: row-reverse;
   margin: 16px;
   gap: 10px;
+}
+.a-question-headline {
+  font-size: 18px;
+  font-weight: 500;
+}
+.m-answer-section {
+  font-size: 16px;
 }
