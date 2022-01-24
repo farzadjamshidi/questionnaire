@@ -1,10 +1,14 @@
 <div class="o-questions-container" *ngIf="!loading">
 
-  <div class="m-25">
-    <span class="a-question-name">
+  <div class="m-25 a-question-name">
+    <span class="">
       {{questionnaire.name}}
     </span>
-  </div>
+    <mat-icon
+      class="ml-5 cursor-pointer"
+      [matTooltip]="questionnaire.description"
+      >info</mat-icon>
+    </div>
   <mat-progress-bar
     [value]="(activeQuestionIndex+1) * 100 / questionnaire.questions.length"
     >
