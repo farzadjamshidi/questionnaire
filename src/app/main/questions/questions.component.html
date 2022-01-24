@@ -1,34 +1,34 @@
-<div *ngIf="!loading">
+<div class="o-questions-container" *ngIf="!loading">
 
-  <div id="m-question" [ngClass]="{
+  <mat-card id="m-question" class="m-question-card" [ngClass]="{
       'm-question-show': isShowAnimation,
       'm-question-hide': !isShowAnimation,
       'm-question-hide-for-next': isTransitionToNext,
       'm-question-hide-for-prev': isTransitionToPrev
     }" >
-    <div>
-      <span>
+    <div class="mb-20">
+      <span class="a-question-headline">
         {{activeQuestionIndex+1}}- {{activeQuestion.headline}}
       </span>
     </div>
 
-    <mat-form-field appearance="outline"
+    <mat-form-field appearance="outline" class="m-answer-section"
       *ngIf="activeQuestion.question_type === 'text'">
       <input matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'false'"
         placeholder="Type here ...">
       <textarea matInput [formControl]="activeQuestionFormControl" *ngIf="activeQuestion.multiline === 'true'"
+        rows="5"
         placeholder="Type here ..."></textarea>
     </mat-form-field>
 
-    <mat-radio-group
+    <mat-radio-group class="m-answer-section m-radio-group-question"
       *ngIf="activeQuestion.question_type === 'multiple-choice' && activeQuestion.multiple === 'false'"
-      class="m-radio-group-question"
       [formControl]="activeQuestionFormControl">
       <mat-radio-button class="" *ngFor="let choice of activeQuestion.choices" [value]="choice.value">
         {{choice.label}}
       </mat-radio-button>
     </mat-radio-group>
-  </div>
+  </mat-card>
 
   <div class="m-questions-footer">
     <button *ngIf="activeQuestionIndex === questionnaire.questions.length - 1"
