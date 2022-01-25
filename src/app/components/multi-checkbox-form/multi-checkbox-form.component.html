@@ -1,0 +1,6 @@
+<div class="m-multi-checkbox-form-wrapper">
+  <mat-checkbox *ngFor="let choice of choices" class="mb-5"
+    [(ngModel)]="choice.selected" (ngModelChange)="updateAllComplete()">
+    {{choice.label}}
+  </mat-checkbox>
+</div>

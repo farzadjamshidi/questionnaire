@@ -43,6 +43,12 @@
           {{choice.label}}
         </mat-radio-button>
       </mat-radio-group>
+
+      <app-multi-checkbox-form
+        *ngIf="activeQuestion.question_type === 'multiple-choice' && activeQuestion.multiple === 'true'"
+        [formControl]="activeQuestionFormControl">
+      </app-multi-checkbox-form>
+
     </mat-card>
   </div>
 
