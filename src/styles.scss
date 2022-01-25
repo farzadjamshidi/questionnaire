@@ -9,6 +9,15 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
