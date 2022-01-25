@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
 ];
 const BASE_MODULES = [
   RouterModule.forChild(routes),
+  TranslateModule,
   ReactiveFormsModule,
   CommonModule
 ];

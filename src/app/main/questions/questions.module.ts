@@ -11,6 +11,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { MultiCheckBoxFormModule } from 'src/app/components/multi-checkbox-form/multi-checkbox-form.module';
 import { LocalStorage_v0_Question_Repo } from 'src/app/core/repository/localStorage/v0/question_repo.service';
 import { QuestionsComponent } from './questions.component';
 
@@ -35,12 +37,15 @@ const MATERIAL_MODULES = [
 @NgModule({
   declarations: [...COMPONENT],
   imports: [
+    TranslateModule,
+    MultiCheckBoxFormModule,
     ReactiveFormsModule,
     CommonModule,
     ...MATERIAL_MODULES,
     RouterModule.forChild(routes)
   ],
   exports: [
+    MultiCheckBoxFormModule,
     RouterModule,
     ...MATERIAL_MODULES,
     ...COMPONENT

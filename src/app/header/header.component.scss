@@ -15,3 +15,18 @@
   position: absolute;
   left: 16px;
 }
+.m-select-language {
+  position: absolute;
+  right: 16px;
+}
+::ng-deep {
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 30px;
+  }
+  .mat-button-toggle-appearance-standard span.mat-button-toggle-label-content {
+    padding: 0px;
+  }
+  button.mat-button-toggle-button {
+    width: 30px;
+  }
+}

@@ -67,7 +67,9 @@ export class QuestionsComponent implements OnInit, OnDestroy
     this.questionnaire.questions.forEach((question) =>
     {
 
-      const questionFormControl = new FormControl('');
+      const questionFormControl = new FormControl(
+        question.question_type === 'multiple-choice' && question.multiple === 'true' ? question.choices : ''
+      );
 
       if (question.required)
         questionFormControl.setValidators(Validators.required);

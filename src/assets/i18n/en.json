@@ -1,0 +1,16 @@
+{
+  "HEADER": {
+    "QUESTIONARY": "Questionary"
+  },
+  "HOME": {
+    "QUESTIONARY_SELECTED": "A Questionary Selected.",
+    "READY_JOURNEY": "Are you ready for a journey?",
+    "START": "Start!"
+  },
+  "QUESTIONS": {
+    "TYPE_HERE": "Geben Sie hier ein ...",
+    "SUBMIT": "Submit",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous"
+  }
+}

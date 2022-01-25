@@ -1,0 +1,16 @@
+{
+  "HEADER": {
+    "QUESTIONARY": "Fragebogen"
+  },
+  "HOME": {
+    "QUESTIONARY_SELECTED": "Ein Fragebogen ausgewählt.",
+    "READY_JOURNEY": "Sind Sie bereit für eine Reise?",
+    "START": "Anfang!"
+  },
+  "QUESTIONS": {
+    "TYPE_HERE": "Geben Sie hier ein ...",
+    "SUBMIT": "Einreichen",
+    "NEXT": "Nächste",
+    "PREVIOUS": "Vorherige"
+  }
+}
