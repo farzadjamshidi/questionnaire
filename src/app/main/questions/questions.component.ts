@@ -96,8 +96,37 @@ export class QuestionsComponent implements OnInit, OnDestroy
     this.isShowAnimation = false;
     this.isTransitionToNext = true;
 
-    this.activeQuestionIndex++;
-    this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+    const currentQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+    const currentQuestionAnswer = this.activeQuestionFormControl.value;
+
+    if (currentQuestion.jumps?.length > 0 && currentQuestionAnswer)
+    {
+
+      const nextQuestionIdentifire = currentQuestion.jumps.find(
+        jump => jump.conditions.some(condition => condition.value === currentQuestionAnswer)
+      )?.destination.id;
+
+      if (nextQuestionIdentifire)
+      {
+        const prevIndex = this.activeQuestionIndex;
+        this.activeQuestionIndex = this.questionnaire.questions.findIndex(question =>
+          question.identifier === nextQuestionIdentifire
+        );
+        this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+        this.activeQuestion.prev_index = prevIndex;
+      }
+      else
+      {
+        this.activeQuestionIndex++;
+        this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+      }
+
+    }
+    else
+    {
+      this.activeQuestionIndex++;
+      this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+    }
 
     this.selectActiveQuestion();
 
@@ -113,7 +142,16 @@ export class QuestionsComponent implements OnInit, OnDestroy
     this.isShowAnimation = false;
     this.isTransitionToPrev = true;
 
-    this.activeQuestionIndex--;
+    if (this.activeQuestion.prev_index)
+    {
+      this.activeQuestionIndex = this.activeQuestion.prev_index;
+      this.activeQuestion.prev_index = undefined;
+    }
+    else
+    {
+      this.activeQuestionIndex--;
+    }
+
     this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
 
     this.selectActiveQuestion();

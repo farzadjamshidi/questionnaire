@@ -28,6 +28,8 @@ export class Question
   multiline?: MultilineType;
   choices?: Choice[];
   jumps!: Jump[];
+  //FE attribute
+  prev_index?: number;
 }
 
 export type QuestionType = 'multiple-choice' | 'text';
