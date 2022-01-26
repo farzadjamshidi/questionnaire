@@ -1,5 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IQuestionRepo } from 'src/app/core/repository/@interfaces/IQuestionRepo';
 import { GetAllQuestionsRequest, GetAllQuestionsResponse, Question, Questionnaire } from 'src/app/models/question.model';
@@ -23,6 +24,7 @@ export class QuestionsComponent implements OnInit, OnDestroy
   activeQuestion: Question = new Question();
 
   constructor(
+    private router: Router,
     @Inject('IQuestionRepo') private questionService: IQuestionRepo
   ) { }
 
@@ -126,6 +128,7 @@ export class QuestionsComponent implements OnInit, OnDestroy
   submit(): void
   {
     console.log(this.form.controls.questionFormArray.value);
+    this.router.navigate(['/success']);
   }
 
   ngOnDestroy(): void
