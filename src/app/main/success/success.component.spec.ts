@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { SuccessComponent } from './success.component';
 
@@ -12,6 +13,7 @@ describe('SuccessComponent', () =>
   {
     await TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule,
         ...BASE_MODULES
       ],
       declarations: [
@@ -57,5 +59,16 @@ describe('SuccessComponent', () =>
     const thankYouMessage = fixture.debugElement.nativeElement.querySelector('span.a-text-secondary');
 
     expect(thankYouMessage.textContent).toBe('SUCCESS.GET_BACK_SOON');
+  });
+
+  it('should go to home when click on start another questionary button', () =>
+  {
+
+    const fixture = TestBed.createComponent(SuccessComponent);
+    fixture.detectChanges();
+
+    const href = fixture.debugElement.nativeElement.querySelector('button').getAttribute('ng-reflect-router-link');
+
+    expect(href).toEqual('/home');
   });
 });
