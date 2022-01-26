@@ -41,6 +41,16 @@ describe('SuccessComponent', () =>
     expect(content).not.toBeNull();
   });
 
+  it('SuccessComponent should show an SVG like roban', () =>
+  {
+    const fixture = TestBed.createComponent(SuccessComponent);
+    fixture.detectChanges();
+
+    const svg = fixture.debugElement.nativeElement.querySelector('img.a-roban-svg').getAttribute('src');
+
+    expect(svg).toEqual('../../assets/images/svg/roban.svg');
+  });
+
   it('SuccessComponent should show a Thank you message with proper fontSize', () =>
   {
     const fixture = TestBed.createComponent(SuccessComponent);
