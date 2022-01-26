@@ -48,4 +48,14 @@ describe('SuccessComponent', () =>
 
     expect(thankYouMessage.textContent).toBe('SUCCESS.THANKYOU');
   });
+
+  it('SuccessComponent should show a description for next step with proper fontSize', () =>
+  {
+    const fixture = TestBed.createComponent(SuccessComponent);
+    fixture.detectChanges();
+
+    const thankYouMessage = fixture.debugElement.nativeElement.querySelector('span.a-text-secondary');
+
+    expect(thankYouMessage.textContent).toBe('SUCCESS.GET_BACK_SOON');
+  });
 });
