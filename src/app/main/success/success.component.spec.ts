@@ -1,5 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { SuccessComponent } from './success.component';
+
+const BASE_MODULES = [
+  TranslateModule.forRoot()
+];
 
 describe('SuccessComponent', () =>
 {
@@ -7,6 +12,7 @@ describe('SuccessComponent', () =>
   {
     await TestBed.configureTestingModule({
       imports: [
+        ...BASE_MODULES
       ],
       declarations: [
         SuccessComponent
@@ -31,5 +37,15 @@ describe('SuccessComponent', () =>
     const content = card?.querySelector('div.m-success-card-content');
 
     expect(content).not.toBeNull();
+  });
+
+  it('SuccessComponent should show a Thank you message with proper fontSize', () =>
+  {
+    const fixture = TestBed.createComponent(SuccessComponent);
+    fixture.detectChanges();
+
+    const thankYouMessage = fixture.debugElement.nativeElement.querySelector('span.a-text-primary');
+
+    expect(thankYouMessage.textContent).toBe('SUCCESS.THANKYOU');
   });
 });
