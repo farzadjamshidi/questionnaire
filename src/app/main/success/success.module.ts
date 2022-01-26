@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { SuccessComponent } from './success.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
 ];
 
 const BASE_MODULES = [
+  TranslateModule,
   CommonModule
 ];
 const COMPONENTS = [SuccessComponent];
