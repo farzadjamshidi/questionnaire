@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'success',
+    loadChildren: () => import('./main/success/success.module').then(m => m.SuccessModule)
+  },
+  {
     path: 'questions',
     loadChildren: () => import('./main/questions/questions.module').then(m => m.QuestionsModule)
   },

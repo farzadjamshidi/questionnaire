@@ -1,4 +1,9 @@
 {
+  "SUCCESS": {
+    "START_ANOTHER": "Start Another Questionary",
+    "GET_BACK_SOON": "We will get back to you soon.",
+    "THANKYOU": "Thank You"
+  },
   "HEADER": {
     "QUESTIONARY": "Questionary"
   },
