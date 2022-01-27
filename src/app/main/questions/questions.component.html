@@ -24,6 +24,7 @@
       <div class="mb-20">
         <span class="a-question-headline">
           {{activeQuestionIndex+1}}- {{activeQuestion.headline}}
+          <span class="a-required-star" *ngIf="activeQuestion.required">*</span>
         </span>
       </div>
 
@@ -61,9 +62,11 @@
       [disabled]="activeQuestionFormControl?.invalid"
       mat-raised-button color="primary" class="ml-20" (click)="goToNextQuestion()">
       {{'QUESTIONS.NEXT' | translate}}
+      <mat-icon>arrow_forward_ios</mat-icon>
     </button>
     <button *ngIf="activeQuestionIndex !== 0"
       mat-raised-button color="primary" (click)="goToPrevQuestion()">
+      <mat-icon>arrow_back_ios</mat-icon>
       {{'QUESTIONS.PREVIOUS' | translate}}
     </button>
   </div>
