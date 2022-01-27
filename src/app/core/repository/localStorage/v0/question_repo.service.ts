@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GetAllQuestionsRequest, GetAllQuestionsResponse } from 'src/app/models/question.model';
-import * as data from '../../../../../../questionnaire.json';
+import * as data from '../../../../../assets/static-files/questionnaire.json';
 import { IQuestionRepo } from '../../@interfaces/IQuestionRepo';
 
 @Injectable({
